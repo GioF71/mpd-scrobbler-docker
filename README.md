@@ -59,8 +59,8 @@ The following tables reports all the currently supported environment variables.
 
 VARIABLE | DEFAULT | NOTES
 ---|---|---
-USERNAME|SCROBBLER_USERNAME|Last.fm or Librefm User name.
-PASSWORD|SCROBBLER_PASSWORD|Last.fm or Librefm Password. Make sure you escape special characters if needed
+SERVICE_USERNAME|SERVICE_USERNAME|Last.fm or Librefm User name.
+SERVICE_PASSWORD|SERVICE_PASSWORD|Last.fm or Librefm Password. Make sure you escape special characters if needed
 MPD_HOSTNAME|localhost|Hostname or ip address of the Music Player Daemon instance.
 MPD_PORT|6600|Port of the Music Player Daemon.
 USE_MPD_PASSWORD|no|Use MPD password.

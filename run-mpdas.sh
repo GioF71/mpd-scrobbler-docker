@@ -1,7 +1,7 @@
 #!/bin/sh
 
-echo "username = " ${USERNAME} >> /etc/mpdas.conf
-echo "password = " ${PASSWORD} >> /etc/mpdas.conf
+echo "username = " ${SERVICE_USERNAME} >> /etc/mpdas.conf
+echo "password = " ${SERVICE_PASSWORD} >> /etc/mpdas.conf
 
 echo "host = " ${MPD_HOSTNAME} >> /etc/mpdas.conf
 if [ "$USE_MPD_PASSWORD" == "yes" ]; then \
