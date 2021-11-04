@@ -51,7 +51,10 @@ Create your own mpdas.conf starting from the file
 
 Customize your mpdas.conf file with you details, then start mpd-scrobbler by simply typing:
 
-`docker run -it --rm -v ${PWD}/mpdas.conf:/etc/mpdas.conf giof71/--network host mpd-scrobbler:stable`
+`docker run -it --rm \
+    -v ${PWD}/mpdas.conf:/etc/mpdas.conf \
+    --network host \
+    giof71/mpd-scrobbler:stable`
 
 Note that `--network host` is required should mpd be running on the host machine. If you deploy mpdas through docker-compose, using the host network will not be required and/or necessary.
 
