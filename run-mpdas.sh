@@ -6,7 +6,7 @@ echo "password = " ${SERVICE_PASSWORD} >> /etc/mpdas.conf
 echo "host = " ${MPD_HOSTNAME} >> /etc/mpdas.conf
 if [ "$USE_MPD_PASSWORD" == "yes" ]; then \
   echo "MPD Password specified: $MPD_PASSWORD"; \
-  echo "mpdpassword = " ${MPD_PASSWORD} >> /etc/mpdas.conf \
+  echo "mpdpassword = " ${MPD_PASSWORD} >> /etc/mpdas.conf; \
 else \
   echo "MPD Password not specified"; \
 fi
