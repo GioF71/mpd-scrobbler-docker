@@ -8,7 +8,7 @@ First and foremost, the reference to the awesome projects:
 [mpdas](https://github.com/hrkfdn/mpdas/)
 
 ## Links
-Source: [GitHub](https://github.com/giof71/mpd-scrobbler-docker)<br />
+Source: [GitHub](https://github.com/giof71/mpd-scrobbler-docker)  
 Images: [DockerHub](https://hub.docker.com/r/giof71/mpd-scrobbler)
 
 ## Why
@@ -47,7 +47,7 @@ You may want to pull the "stable" image as opposed to the "latest".
 
 Create your own mpdas.conf starting from the file
 
-`sample-mpdas.conf`
+[sample-mpdas.conf](https://github.com/GioF71/mpdas-scrobbler-docker/blob/main/sample-mpdas.conf)
 
 Customize your mpdas.conf file with you details, then start mpd-scrobbler by simply typing:
 
