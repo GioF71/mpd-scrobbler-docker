@@ -45,11 +45,7 @@ You may want to pull the "stable" image as opposed to the "latest".
 
 ## Usage
 
-Create your own mpdas.conf starting from the file
-
-[sample-mpdas.conf](https://github.com/GioF71/mpdas-scrobbler-docker/blob/main/sample-mpdas.conf)
-
-Customize your mpdas.conf file with you details, then start mpd-scrobbler by simply typing:
+You can start mpd-scrobbler by simply typing:
 
 `docker run -d --rm -e USERNAME=user -e PASSWORD=passw -e MPD_HOSTNAME=localhost --network host giof71/mpd-scrobbler:stable`
 
