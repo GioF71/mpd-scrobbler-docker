@@ -1,4 +1,4 @@
-# mpd-scrobbler-docker - a Docker image for mpd with alsa
+# mpd-scrobbler-docker - a Docker image for mpdas (Last.fm and Librefm scrobbler for mpd)
 
 ## Reference
 
