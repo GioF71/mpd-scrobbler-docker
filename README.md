@@ -59,7 +59,7 @@ The following tables reports all the currently supported environment variables.
 
 VARIABLE | DEFAULT | NOTES
 ---|---|---
-STARTUP_DELAY_SEC|0|Delay before starting the application. This can be useful if your container is set up to start automatically, so that you can resolve race conditions with mpd and with squeezelite if all those services run on the same audio device. I experienced issues with my Asus Tinkerboard, while the Raspberry Pi has never really needed this. Your mileage may vary. Feel free to report your personal experience.
+STARTUP_DELAY_SEC|0|Delay before starting the application.
 
 ## Build
 
