@@ -1,6 +1,22 @@
 #!/bin/sh
 
-#sed -i 's/MPD_AUDIO_DEVICE/'"$MPD_AUDIO_DEVICE"'/g' /etc/mpdas.conf
+echo "username = " ${USERNAME} >> /etc/mpdas.conf
+echo "password = " ${PASSWORD} >> /etc/mpdas.conf
+
+echo "host = " ${MPD_HOSTNAME} >> /etc/mpdas.conf
+if [ "$USE_MPD_PASSWORD" == "yes" ]; then \
+  echo "MPD Password specified: $MPD_PASSWORD"; \
+  echo "mpdpassword = " ${MPD_PASSWORD} >> /etc/mpdas.conf \
+else \
+  echo "MPD Password not specified"; \
+fi
+
+echo "port = " ${MPD_PORT} >> /etc/mpdas.conf
+
+echo "runas = root" >> /etc/mpdas.conf
+
+echo "debug = " ${DEBUG} >> /etc/mpdas.conf
+echo "service = " ${SERVICE} >> /etc/mpdas.conf
 
 cat /etc/mpdas.conf
 

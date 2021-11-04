@@ -51,7 +51,7 @@ Create your own mpdas.conf starting from the file
 
 Customize your mpdas.conf file with you details, then start mpd-scrobbler by simply typing:
 
-`docker run -it --rm -v ${PWD}/mpdas.conf:/etc/mpdas.conf --network host giof71/mpd-scrobbler:stable`
+`docker run -d --rm -e USERNAME=user -e PASSWORD=passw -e MPD_HOSTNAME=localhost --network host giof71/mpd-scrobbler:stable`
 
 Note that `--network host` is required should mpd be running on the host machine. If you deploy mpdas through docker-compose, using the host network will not be required and/or necessary.
 
@@ -59,6 +59,14 @@ The following tables reports all the currently supported environment variables.
 
 VARIABLE | DEFAULT | NOTES
 ---|---|---
+USERNAME|SCROBBLER_USERNAME|Last.fm or Librefm User name.
+PASSWORD|SCROBBLER_PASSWORD|Last.fm or Librefm Password. Make sure you escape special characters if needed
+MPD_HOSTNAME|localhost|Hostname or ip address of the Music Player Daemon instance.
+MPD_PORT|6600|Port of the Music Player Daemon.
+USE_MPD_PASSWORD|no|Use MPD password.
+MPD_PASSWORD|MPD_PASSWORD|The MPD password.
+DEBUG|0|Active: 1, Inactive: 0
+SERVICE|Last.fm|The Service to be used. Can be Last.fm or librefm
 STARTUP_DELAY_SEC|0|Delay before starting the application.
 
 ## Build
