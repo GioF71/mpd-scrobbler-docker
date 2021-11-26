@@ -1,27 +1,34 @@
 #!/bin/bash
 
-echo "username = " ${SERVICE_USERNAME} >> /etc/mpdas.conf
-echo "password = " ${SERVICE_PASSWORD} >> /etc/mpdas.conf
+CONFIG_FILE=/etc/mpdas.conf
 
-echo "host = " ${MPD_HOSTNAME} >> /etc/mpdas.conf
-
-if [ "$USE_MPD_PASSWORD" == "yes" ]; then \
-  echo "MPD Password specified: $MPD_PASSWORD"; \
-  echo "mpdpassword = " ${MPD_PASSWORD} >> /etc/mpdas.conf; \
-else \
-  echo "MPD Password not specified"; \
+if test -f "$CONFIG_FILE"; then 
+    echo "$CONFIG_FILE exists, removing"
+    rm $CONFIG_FILE;
 fi
 
-echo "port = " ${MPD_PORT} >> /etc/mpdas.conf
+echo "Building configuration file $CONFIG_FILE ..."
 
-echo "runas = root" >> /etc/mpdas.conf
+echo "username = "${SERVICE_USERNAME} >> $CONFIG_FILE
+echo "password = "${SERVICE_PASSWORD} >> $CONFIG_FILE
 
-echo "debug = " ${DEBUG} >> /etc/mpdas.conf
-echo "service = " ${SERVICE} >> /etc/mpdas.conf
+echo "host = "${MPD_HOSTNAME} >> $CONFIG_FILE
 
-cat /etc/mpdas.conf
+if [ "$USE_MPD_PASSWORD" == "yes" ]; then
+  echo "mpdpassword = "${MPD_PASSWORD} >> $CONFIG_FILE;
+fi
+
+echo "port = "${MPD_PORT} >> $CONFIG_FILE
+
+echo "runas = root" >> $CONFIG_FILE
+
+echo "debug = "${DEBUG} >> $CONFIG_FILE
+echo "service = "${SERVICE} >> $CONFIG_FILE
+
+cat $CONFIG_FILE
 
 echo "About to sleep for $STARTUP_DELAY_SEC second(s)"
 sleep $STARTUP_DELAY_SEC
-echo "Rise and shine!"
-/usr/bin/mpdas -c /etc/mpdas.conf
+echo "Ready to start."
+
+/usr/bin/mpdas -c $CONFIG_FILE
