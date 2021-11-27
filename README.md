@@ -62,7 +62,7 @@ MPD_PORT|6600|Port of the Music Player Daemon.
 USE_MPD_PASSWORD|no|Use Music Player Daemon password.
 MPD_PASSWORD|MPD_PASSWORD|The Music Player Daemon password.
 DEBUG|0|Active: [1], Inactive: [0].
-SERVICE|Last.fm|The Service to be used. Can be Last.fm or librefm.
+SERVICE|Last.fm|The Service to be used. Can be `Last.fm` or `librefm`.
 STARTUP_DELAY_SEC|0|Delay before starting the application.
 
 ## Build
