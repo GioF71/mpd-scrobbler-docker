@@ -59,11 +59,18 @@ SERVICE_USERNAME|SERVICE_USERNAME|Last.fm or Librefm User name.
 SERVICE_PASSWORD|SERVICE_PASSWORD|Last.fm or Librefm Password. Make sure you escape special characters if needed.
 MPD_HOSTNAME|localhost|Hostname or ip address of the Music Player Daemon instance.
 MPD_PORT|6600|Port of the Music Player Daemon.
-USE_MPD_PASSWORD|no|Use Music Player Daemon password.
 MPD_PASSWORD|MPD_PASSWORD|The Music Player Daemon password.
 DEBUG|0|Active: [`1`], Inactive: [`0`].
 SERVICE|Last.fm|The Service to be used. Can be [`Last.fm`] or [`librefm`].
 STARTUP_DELAY_SEC|0|Delay before starting the application.
+
+## Notable changes to the configuration
+
+A few environment variables have been deprecated, see the following table.
+
+Deprecated Variable|Deprecated Since|Comment
+---|---|---
+USE_MPD_PASSWORD|2021-11-27|This variable is not required anymore: just set the MPD_PASSWORD variable
 
 ## Build
 

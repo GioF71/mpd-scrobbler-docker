@@ -14,8 +14,13 @@ echo "password = "${SERVICE_PASSWORD} >> $CONFIG_FILE
 
 echo "host = "${MPD_HOSTNAME} >> $CONFIG_FILE
 
-if [ "$USE_MPD_PASSWORD" == "yes" ]; then
-  echo "mpdpassword = "${MPD_PASSWORD} >> $CONFIG_FILE;
+echo "MPD Password processing [${MPD_PASSWORD}]";
+
+if [ -z "${MPD_PASSWORD}" ]; then \
+  echo "No password specified for mpd"; \
+else \
+  echo "Using password for mpd"; \
+  echo "mpdpassword = ${MPD_PASSWORD}" >> $CONFIG_FILE; \
 fi
 
 echo "port = "${MPD_PORT} >> $CONFIG_FILE
