@@ -1,19 +1,20 @@
-# mpd-scrobbler-docker - a Docker image for mpdas (Last.fm and Libre.fm scrobbler for mpd)
+# mpd-scrobbler-docker - a Docker image for mpdscribble (Last.fm, Libre.fm and Jamendo scrobbler for mpd)
 
 ## Reference
 
 First and foremost, the reference to the awesome projects:
 
 [Music Player Daemon](https://www.musicpd.org/)  
-[mpdas](https://github.com/hrkfdn/mpdas/)
+[MPDScribble](https://www.musicpd.org/clients/mpdscribble/)
 
 ## Links
+
 Source: [GitHub](https://github.com/giof71/mpd-scrobbler-docker)  
 Images: [DockerHub](https://hub.docker.com/r/giof71/mpd-scrobbler)
 
 ## Why
 
-I prepared this Dockerfile Because I wanted to be able to install mpdas easily on any machine (provided the architecture is amd64 or arm). Configuring the container is easy through a webapp like Portainer.
+I prepared this Dockerfile Because I wanted to be able to install mpdscribble easily on any machine (provided the architecture is amd64 or arm). Configuring the container is easy through a webapp like Portainer.
 
 ## Prerequisites
 
@@ -29,7 +30,7 @@ The Dockerfile and the included scripts have been tested on the following distro
 
 - Manjaro Linux with Gnome (amd64)
 - Asus Tinkerboard
-- Raspberry Pi 3 (but I have no reason to doubt it will also work on a Raspberry Pi 4/400)
+- Raspberry Pi 3 and 4, both 32 and 64 bit
 
 As I test the Dockerfile on more platforms, I will update this list.
 
@@ -47,22 +48,38 @@ You may want to pull the "stable" image as opposed to the "latest".
 
 You can start mpd-scrobbler by simply typing:
 
-`docker run -d --rm -e USERNAME=user -e PASSWORD=passw -e MPD_HOSTNAME=localhost --network host giof71/mpd-scrobbler:stable`
+```text
+    docker run -d --rm \
+        -e LASTFM_USERNAME=lastfmuser \
+        -e LASTFM_PASSWORD=lastfmpassw \
+        -e MPD_HOSTNAME=mpd-hostname \
+        -e MPD_PORT=6600 \
+        giof71/mpd-scrobbler:latest`
+```
 
-Note that `--network host` is required should mpd be running on the host machine. If you deploy mpdas through docker-compose, using the host network will not be required and/or necessary.
+### Environment Variables
 
 The following tables reports all the currently supported environment variables.
 
 VARIABLE | DEFAULT | NOTES
 ---|---|---
-SERVICE_USERNAME|SERVICE_USERNAME|Last.fm or Librefm User name.
-SERVICE_PASSWORD|SERVICE_PASSWORD|Last.fm or Librefm Password. Make sure you escape special characters if needed.
-MPD_HOSTNAME|localhost|Hostname or ip address of the Music Player Daemon instance.
-MPD_PORT|6600|Port of the Music Player Daemon.
-MPD_PASSWORD|MPD_PASSWORD|The Music Player Daemon password.
-DEBUG|0|Active: [`1`], Inactive: [`0`].
-SERVICE|Last.fm|The Service to be used. Can be [`Last.fm`] or [`librefm`].
+MPD_HOST||The host running MPD, possibly protected by a password(`[PASSWORD@]HOSTNAME`). Defaults to localhost. Leave blank or `localhost` when running in `network=host` mode.
+MPD_PORT||The port that the MPD listens on and mpdscribble should try to connect to. Defaults to 6600.
+SCRIBBLE_VERBOSE||How verbose mpdscribble's logging should be. Default is 1.
+LASTFM_USERNAME||Username for Last.fm.
+LASTFM_PASSWORD||Password for Last.fm
+LIBREFM_USERNAME||Username for Libre.fm
+LIBREFM_PASSWORD||Password for Libre.fm
+JAMENDO_USERNAME||Username for Jamendo
+JAMENDO_PASSWORD||Password for Jamendo
+PROXY||Proxy support for `mpdscribble`. Example value: `http://the.proxy.server:3128`
 STARTUP_DELAY_SEC|0|Delay before starting the application.
+
+### Volumes
+
+Volume|Description
+:---|:---
+/app/scribble|Where `mpdscribble` will write its journals and its log file
 
 ## Notable changes to the configuration
 
