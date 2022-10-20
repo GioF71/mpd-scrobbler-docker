@@ -48,9 +48,16 @@ You may want to pull the "stable" image as opposed to the "latest".
 
 You can start mpd-scrobbler by simply typing:
 
-`docker run -d --rm -e USERNAME=user -e PASSWORD=passw -e MPD_HOSTNAME=localhost --network host giof71/mpd-scrobbler:stable`
+```text
+    docker run -d --rm \
+        -e LASTFM_USERNAME=lastfmuser \
+        -e LASTFM_PASSWORD=lastfmpassw \
+        -e MPD_HOSTNAME=mpd-hostname \
+        -e MPD_PORT=6600 \
+        giof71/mpd-scrobbler:stable`
+```
 
-Note that `--network host` is required should mpd be running on the host machine. If you deploy mpd-scrobbler through docker-compose, using the host network will not be required and/or necessary.
+### Environment Variables
 
 The following tables reports all the currently supported environment variables.
 
@@ -67,6 +74,12 @@ JAMENDO_USERNAME||Username for Jamendo
 JAMENDO_PASSWORD||Password for Jamendo
 PROXY||Proxy support for `mpdscribble`. Example value: `http://the.proxy.server:3128`
 STARTUP_DELAY_SEC|0|Delay before starting the application.
+
+### Volumes
+
+Volume|Description
+:---|:---
+/app/scribble|Where `mpdscribble` will write its journals and its log file
 
 ## Notable changes to the configuration
 
