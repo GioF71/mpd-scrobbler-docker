@@ -53,7 +53,6 @@ else
   exit 3
 fi
 
-
 echo "Base Image: ["$expanded_base_image"]"
 echo "Tag: ["$tag"]"
 echo "Proxy: ["$proxy"]"
