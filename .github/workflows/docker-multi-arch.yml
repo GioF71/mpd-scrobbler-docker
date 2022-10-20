@@ -39,11 +39,11 @@ jobs:
           base_image_from_matrix[bullseye]=debian:bullseye-slim
           base_image_from_matrix[jammy]=ubuntu:jammy
 
-          declare -A mpdscribble-versions
-          mpdscribble-versions[buster]=0.22.6
-          mpdscribble-versions[bullseye]=0.22.6
-          mpdscribble-versions[bookworm]=0.24.2
-          mpdscribble-versions[jammy]=0.23.1
+          declare -A mpdscribble_versions
+          mpdscribble_versions[buster]=0.22.6
+          mpdscribble_versions[bullseye]=0.22.6
+          mpdscribble_versions[bookworm]=0.24.2
+          mpdscribble_versions[jammy]=0.23.1
 
           declare -A special_tags
           special_tags[bullseye]="${image_name}:stable,${image_name}:latest"
@@ -51,7 +51,7 @@ jobs:
           special_tags[buster]="${image_name}:legacy"
 
           base_image=${base_image_from_matrix[${{ matrix.base }}]}
-          mpd_version=${mpdscribble-versions[${{ matrix.base }}]}
+          mpd_version=${mpdscribble_versions[${{ matrix.base }}]}
 
           tags=""
           if [ "${ref_type}" = "branch" ]; then
