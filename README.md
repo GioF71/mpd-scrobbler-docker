@@ -54,7 +54,7 @@ You can start mpd-scrobbler by simply typing:
         -e LASTFM_PASSWORD=lastfmpassw \
         -e MPD_HOSTNAME=mpd-hostname \
         -e MPD_PORT=6600 \
-        giof71/mpd-scrobbler:stable`
+        giof71/mpd-scrobbler:latest`
 ```
 
 ### Environment Variables
