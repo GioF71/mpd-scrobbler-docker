@@ -21,4 +21,4 @@ jobs:
           pass: ${{ secrets.DOCKER_PASSWORD }}
           slug: ${{ secrets.DOCKER_USERNAME }}/mpd-scrobbler
           readme: ./README.md
-          description: Scrobbler for mpd (Last.fm and Libre.fm)
+          description: Scrobbler for mpd (Last.fm, Libre.fm and Jamendo)
