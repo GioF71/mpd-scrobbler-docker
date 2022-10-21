@@ -42,7 +42,7 @@ Here is the [repository](https://hub.docker.com/repository/docker/giof71/mpd-scr
 
 Getting the image from DockerHub is as simple as typing:
 
-`docker pull giof71/mpd-scrobbler:stable`
+`docker pull giof71/mpd-scrobbler`
 
 You may want to pull the "stable" image as opposed to the "latest".
 
