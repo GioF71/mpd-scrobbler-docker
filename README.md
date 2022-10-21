@@ -99,3 +99,10 @@ You can build (or rebuild) the image by opening a terminal from the root of the 
 
 It will take very little time even on a Raspberry Pi. When it's finished, you can run the container following the previous instructions.  
 Just be careful to use the tag you have just built.
+
+## Change History
+
+Change Date|Major Changes
+---|---
+2022-10-21|Run with unprivileged user
+2022-10-20|Switch to mpdscribble
