@@ -55,7 +55,8 @@ ENV MPD_PORT 6600
 ENV USE_MPD_PASSWORD no
 ENV MPD_PASSWORD ""
 
-ENV DEBUG 0
+ENV PUID ""
+ENV PGID ""
 
 COPY app/bin/run-mpdscribble.sh /app/bin/run-mpdscribble.sh
 RUN chmod u+x /app/bin/run-mpdscribble.sh

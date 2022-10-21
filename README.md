@@ -63,6 +63,8 @@ The following tables reports all the currently supported environment variables.
 
 VARIABLE | DEFAULT | NOTES
 ---|---|---
+PUID||Run using this User id. Defaults to 1000.
+PGID||Run using this Group id. Defaults to 1000.
 MPD_HOST||The host running MPD, possibly protected by a password(`[PASSWORD@]HOSTNAME`). Defaults to localhost. Leave blank or `localhost` when running in `network=host` mode.
 MPD_PORT||The port that the MPD listens on and mpdscribble should try to connect to. Defaults to 6600.
 SCRIBBLE_VERBOSE||How verbose mpdscribble's logging should be. Default is 1.
