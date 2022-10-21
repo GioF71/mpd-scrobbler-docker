@@ -1,4 +1,6 @@
-# mpd-scrobbler-docker - a Docker image for mpdscribble (Last.fm, Libre.fm and Jamendo scrobbler for mpd)
+# mpd-scrobbler-docker
+
+A Docker image for mpdscribble (`Last.fm`, `Libre.fm` and `Jamendo` scrobbler for mpd).
 
 ## Reference
 
