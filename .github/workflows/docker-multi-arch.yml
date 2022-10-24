@@ -7,6 +7,7 @@ on:
       - "main/*"
       - "devel/*"
       - "feature/*"
+      - "daily/*"
 
 jobs:
   release:
@@ -51,7 +52,7 @@ jobs:
           special_tags[buster]="${image_name}:legacy"
 
           base_image=${base_image_from_matrix[${{ matrix.base }}]}
-          mpd_version=${mpdscribble_versions[${{ matrix.base }}]}
+          mpdscribble_version=${mpdscribble_versions[${{ matrix.base }}]}
 
           tags=""
           if [ "${ref_type}" = "branch" ]; then
@@ -59,13 +60,13 @@ jobs:
             if [ "${ref_name}" = "main" ]; then
               echo "main branch";
               tags="${image_name}:main-${distro_id}";
-              tags="$tags,${image_name}:main-${distro_id}-${mpd_version}";
+              tags="$tags,${image_name}:main-${distro_id}-${mpdscribble_version}";
             elif [ "${ref_name}" = "devel" ]; then
               echo "devel branch";
-              tags="${image_name}:devel-${distro_id}-${mpd_version}"
+              tags="${image_name}:devel-${distro_id}-${mpdscribble_version}"
             else
               echo "other branch ["${ref_name}"]";
-              tags="${image_name}:branch-${ref_name}-${distro_id}-${mpd_version}";
+              tags="${image_name}:branch-${ref_name}-${distro_id}-${mpdscribble_version}";
             fi
           elif [ "${ref_type}" = "tag" ]; then
             echo "tag mode";
@@ -78,8 +79,8 @@ jobs:
               echo "release tag";
               echo "Building now: ["$distro_id"]";
               tags="${tags},$image_name:${distro_id}";
-              tags="${tags},$image_name:${distro_id}-${mpd_version}"
-              tags="$tags,$image_name:${distro_id}-${mpd_version}-${tag_name}"              
+              tags="${tags},$image_name:${distro_id}-${mpdscribble_version}"
+              tags="${tags},$image_name:${distro_id}-${mpdscribble_version}-${tag_name}"              
               select_special_tags=${special_tags["${distro_id}"]};
               if [[ -n "${select_special_tags}" ]]; then
                 echo "Found special tags for ["${distro_id}"]=["${select_special_tags}"]";
@@ -89,13 +90,17 @@ jobs:
               fi
             elif [ "${tag_type}" = "main" ]; then
               echo "main tag";
-              tags="${image_name}:main-${tag_name}-${distro_id}-${mpd_version}";
+              tags="${image_name}:main-${tag_name}-${distro_id}-${mpdscribble_version}";
             elif [ "${tag_type}" = "devel" ]; then
               echo "devel tag";
-              tags="${image_name}:devel-${tag_name}-${distro_id}-${mpd_version}";
+              tags="${image_name}:devel-${tag_name}-${distro_id}-${mpdscribble_version}";
             elif [ "${tag_type}" = "feature" ]; then
               echo "feature tag";
-              tags="${image_name}:feature-${tag_name}-${distro_id}-${mpd_version}";
+              tags="${image_name}:feature-${tag_name}-${distro_id}-${mpdscribble_version}";
+            elif [ "${tag_type}" = "daily" ]; then
+              echo "daily build";
+              tags="${tags},${image_name}:daily-${distro_id}";
+              tags="${tags},${image_name}:daily-${distro_id}-${mpdscribble_version}";
             fi
           fi
           echo "Building tags: ["${tags}"]"
