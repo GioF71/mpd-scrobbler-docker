@@ -107,5 +107,6 @@ Just be careful to use the tag you have just built.
 
 Change Date|Major Changes
 ---|---
+2022-10-24|Bugfix (wrong variable references and missing permissions)
 2022-10-21|Run with unprivileged user
 2022-10-21|Switch to `mpdscribble`
