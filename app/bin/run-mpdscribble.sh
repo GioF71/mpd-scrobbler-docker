@@ -65,8 +65,9 @@ HOME_DIR=/home/$USER_NAME
 ### create home directory and ancillary directories
 if [ ! -d "$HOME_DIR" ]; then
 echo "Home directory [$HOME_DIR] not found, creating."
+
 mkdir -p $HOME_DIR
-chown -R $PUID:$PGID $HOME_DIR
+chown -R mpdscribble-user:mpdscribble-user $HOME_DIR
 ls -la $HOME_DIR -d
 ls -la $HOME_DIR
 fi
@@ -88,6 +89,10 @@ else
 fi
 echo "Created $USER_NAME (group: $GROUP_NAME)";
 
-CMDLINE="/usr/bin/mpdscribble --no-daemon --conf $SCRIBBLE_CONFIG_FILE"
+chown -R mpdscribble-user:mpdscribble-user /app/log/mpdscribble
+
+CMD_LINE="/usr/bin/mpdscribble --no-daemon --conf $SCRIBBLE_CONFIG_FILE"
+
+echo "CMD_LINE=[$CMD_LINE]"
 
 su - $USER_NAME -c "$CMD_LINE"
