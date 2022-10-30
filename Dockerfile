@@ -17,7 +17,8 @@ RUN if [ "${USE_APT_PROXY}" = "Y" ]; then \
     fi
 
 RUN apt-get update
-RUN apt-get install --no-install-recommends -y mpdscribble
+RUN apt-get install -y mpdscribble
+RUN apt-get install -y tzdata
 RUN rm -rf /var/lib/apt/lists/*
 
 FROM scratch
@@ -54,6 +55,8 @@ ENV MPD_HOSTNAME localhost
 ENV MPD_PORT 6600
 ENV USE_MPD_PASSWORD no
 ENV MPD_PASSWORD ""
+
+ENV LOG_DESTINATION ""
 
 ENV PUID ""
 ENV PGID ""

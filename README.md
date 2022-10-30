@@ -63,13 +63,13 @@ You can start mpd-scrobbler by simply typing:
 
 The following tables reports all the currently supported environment variables.
 
-VARIABLE | DEFAULT | NOTES
----|---|---
+VARIABLE|DEFAULT|NOTES
+:---|:---:|:---
 PUID||Run using this User id. Defaults to `1000`.
 PGID||Run using this Group id. Defaults to `1000`.
 MPD_HOST||The host running MPD, possibly protected by a password(`[PASSWORD@]HOSTNAME`). Defaults to `localhost`. Leave blank or `localhost` when running in `network=host` mode.
 MPD_PORT||The port that the `MPD` listens on and `mpdscribble` should try to connect to. Defaults to `6600`, the default `MPD` port.
-SCRIBBLE_VERBOSE||How verbose `mpdscribble`'s logging should be. Default is 1.
+SCRIBBLE_VERBOSE|1|How verbose `mpdscribble`'s logging should be. Defaults to `1`.
 LASTFM_USERNAME||Username for `Last.fm`
 LASTFM_PASSWORD||Password for `Last.fm`
 LIBREFM_USERNAME||Username for `Libre.fm`
@@ -77,6 +77,7 @@ LIBREFM_PASSWORD||Password for `Libre.fm`
 JAMENDO_USERNAME||Username for `Jamendo`
 JAMENDO_PASSWORD||Password for `Jamendo`
 PROXY||Proxy support for `mpdscribble`. Example value: `http://the.proxy.server:3128`
+LOG_DESTINATION|stdout|Where to log. Options are `log`, `stdout` and `none`. Defaults to `stdout` if not specified
 STARTUP_DELAY_SEC|0|Delay before starting the application.
 
 ### Volumes
@@ -107,6 +108,7 @@ Just be careful to use the tag you have just built.
 
 Change Date|Major Changes
 ---|---
+2022-10-31|Add support for log destination
 2022-10-24|Support for daily builds
 2022-10-24|Bugfix (wrong variable references and missing permissions)
 2022-10-21|Run with unprivileged user

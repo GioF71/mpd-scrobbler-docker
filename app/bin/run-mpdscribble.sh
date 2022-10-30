@@ -1,13 +1,27 @@
 #!/bin/bash
 
+# error codes
+# 2 Invalid log destination
+
 SCRIBBLE_CONFIG_FILE=/app/conf/mpdscribble.conf
 
 echo "#mpdscribble configuration" > $SCRIBBLE_CONFIG_FILE
 
+DEFAULT_LOG_DESTINATION=stdout
+
 if [ -n "$PROXY" ]; then
     echo "proxy = $PROXY" >> $SCRIBBLE_CONFIG_FILE
 fi
-echo "log = /app/log/mpdscribble/scribble.log" >> $SCRIBBLE_CONFIG_FILE
+
+if [[ -z "${LOG_DESTINATION}" || "${LOG_DESTINATION^^}" == "STDOUT" ]]; then
+    echo "log = -" >> $SCRIBBLE_CONFIG_FILE
+elif [[ "${LOG_DESTINATION^^}" == "FILE" ]]; then
+    echo "log = /app/log/mpdscribble/scribble.log" >> $SCRIBBLE_CONFIG_FILE
+elif [[ ! "${LOG_DESTINATION^^}" == "NONE" ]]; then
+    echo "Invalid LOG_DESTINATION [${LOG_DESTINATION}]"
+    exit 2
+fi
+
 if [ -n "$SCRIBBLE_VERBOSE" ]; then
     echo "verbose = $SCRIBBLE_VERBOSE" >> $SCRIBBLE_CONFIG_FILE
 fi
