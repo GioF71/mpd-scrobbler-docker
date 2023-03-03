@@ -39,7 +39,7 @@ jobs:
           base_image_from_matrix[buster]=debian:buster-slim
           base_image_from_matrix[bullseye]=debian:bullseye-slim
           base_image_from_matrix[jammy]=ubuntu:jammy
-          base_image_from_matrix[jammy]=alpine:latest
+          base_image_from_matrix[alpine]=alpine:latest
 
           declare -A mpdscribble_versions
           mpdscribble_versions[buster]=0.22.6
