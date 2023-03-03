@@ -6,12 +6,9 @@
 
 declare -A base_images
 
-base_images[bookworm]=debian:bookworm-slim
-base_images[buster]=debian:buster-slim
-base_images[bullseye]=debian:bullseye-slim
-base_images[jammy]=ubuntu:jammy
+base_images[alpine]=alpine:latest
 
-DEFAULT_BASE_IMAGE=bullseye
+DEFAULT_BASE_IMAGE=alpine
 DEFAULT_TAG=local
 DEFAULT_USE_PROXY=N
 
