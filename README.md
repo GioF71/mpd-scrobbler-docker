@@ -63,29 +63,32 @@ You can start mpd-scrobbler by simply typing:
 
 The following tables reports all the currently supported environment variables.
 
-VARIABLE | DEFAULT | NOTES
----|---|---
-PUID||Run using this User id. Defaults to `1000`.
-PGID||Run using this Group id. Defaults to `1000`.
-MPD_HOST||The host running MPD, possibly protected by a password(`[PASSWORD@]HOSTNAME`). Defaults to `localhost`. Leave blank or `localhost` when running in `network=host` mode.
-MPD_PORT||The port that the `MPD` listens on and `mpdscribble` should try to connect to. Defaults to `6600`, the default `MPD` port.
-SCRIBBLE_VERBOSE||How verbose `mpdscribble`'s logging should be. Default is 1.
-LASTFM_USERNAME||Username for `Last.fm`
-LASTFM_PASSWORD||Password for `Last.fm`
-LIBREFM_USERNAME||Username for `Libre.fm`
-LIBREFM_PASSWORD||Password for `Libre.fm`
-JAMENDO_USERNAME||Username for `Jamendo`
-JAMENDO_PASSWORD||Password for `Jamendo`
+VARIABLE|NOTES
+:---|:---
+USER_MODE|Enables user mode if set to `YES`
+PUID|Run using this User id. Defaults to `1000`.
+PGID|Run using this Group id. Defaults to `1000`.
+MPD_HOST|The host running MPD, possibly protected by a password(`[PASSWORD@]HOSTNAME`). Defaults to `localhost`. Leave blank or `localhost` when running in `network=host` mode.
+MPD_PORT|The port that the `MPD` listens on and `mpdscribble` should try to connect to. Defaults to `6600`, the default `MPD` port.
+SCRIBBLE_VERBOSE|How verbose `mpdscribble`'s logging should be. Defaults to `1`.
+LASTFM_USERNAME|Username for `Last.fm`
+LASTFM_PASSWORD|Password for `Last.fm`
+LIBREFM_USERNAME|Username for `Libre.fm`
+LIBREFM_PASSWORD|Password for `Libre.fm`
+JAMENDO_USERNAME|Username for `Jamendo`
+JAMENDO_PASSWORD|Password for `Jamendo`
 PROXY||Proxy support for `mpdscribble`. Example value: `http://the.proxy.server:3128`
-STARTUP_DELAY_SEC|0|Delay before starting the application.
+STARTUP_DELAY_SEC|Delay before starting the application, defaults to `0`
 
 ### Volumes
 
 Volume|Description
 :---|:---
-/app/scribble|Where `mpdscribble` will write its journals and its log file
+/app/scribble/log|Where `mpdscribble` will write its journals and its log file
 
 ## Notable changes to the configuration
+
+### Changes to Environment Variables
 
 A few environment variables have been deprecated, see the following table.
 
@@ -93,6 +96,12 @@ Deprecated Variable|Deprecated Since|Comment
 ---|---|---
 USE_MPD_PASSWORD|2022-10-21|Removed variable: the `MPD` password must be specified with MPD_HOSTNAME if needed
 USE_MPD_PASSWORD|2021-11-27|This variable is not required anymore: just set the MPD_PASSWORD variable
+
+### Changes to volumes
+
+Date|Description
+:---|:---
+2023-03-03|The log volume is now `/app/scribble/log` instead of `app/scribble`
 
 ## Build
 
